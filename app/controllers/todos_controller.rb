@@ -10,8 +10,12 @@ class TodosController < ApplicationController
   end
 
   def create
-    todo = Todo.create(todo_params)
-    render json: todo.to_json, status: 201
+    if (todo_params[:description]) 
+      todo = Todo.create(todo_params)
+      render json: todo.to_json, status: 201
+    else
+      render json: {message: 'You must provide a description for your todo.'}, status: 400
+    end
   end
 
   def update
@@ -29,7 +33,7 @@ class TodosController < ApplicationController
   def destroy
     todo  = Todo.find params[:id]
     todo.destroy
-    return 204
+    render status: 204
   end
   
 

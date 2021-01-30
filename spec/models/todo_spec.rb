@@ -47,6 +47,12 @@ describe TodosController, type: :controller do
       expect(created['description']).to eq 'Did this'
       expect(created['is_done?']).to be true    
     end
+
+    it 'cannot create a todo without a description' do
+      post :create, params: { todo: { is_done?: true } }
+      expect(response.status).to eq 400
+      expect(Todo.count).to eq 0
+    end
   end
 
   describe 'update' do  
