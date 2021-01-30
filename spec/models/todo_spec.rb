@@ -47,11 +47,6 @@ describe TodosController, type: :controller do
       expect(created['description']).to eq 'Did this'
       expect(created['is_done?']).to be true    
     end
-
-    xit 'returns with error 500 if a problem arises' do
-      # TODO: How can I make the todo be invalid?
-      expect(false).to be true
-    end
   end
 
   describe 'update' do  
@@ -78,13 +73,19 @@ describe TodosController, type: :controller do
       expect(updated['description']).to eq new_title
       expect(updated['is_done?']).to be false
     end
+
     it 'responds with an error if the id is invalid' do
       delete :destroy, params: {id: 299}
       expect(response.status).to eq 404
     end
-    xit 'returns with error 500 if a problem arises' do
-      # TODO: How can I make the todo be invalid?
-      expect(false).to be true
+  end
+
+  describe 'mark complete' do
+    it 'marks a todo as complete' do
+      todo = Todo.create(description:'Get a job')
+      # put '/todos/compete/1'
+      put :complete, params: {id: 1}
+      expect(Todo.last['is_done?']).to be true
     end
   end
 

@@ -11,23 +11,18 @@ class TodosController < ApplicationController
 
   def create
     todo = Todo.create(todo_params)
-    if todo.valid?
-      todo.save
-    else
-      render json: {error: 'Could not create your todo', status: 500}.to_json
-    end
     render json: todo.to_json, status: 201
   end
 
   def update
     todo = Todo.find params[:id]
-    # binding.pry
     todo.update todo_params
-    if todo.valid?
-      todo.save
-    else
-      render json: {error: 'Could not update your todo', status: 500}.to_json
-    end
+    render json: todo.to_json, status: 200
+  end
+  
+  def complete
+    todo = Todo.find params[:id]
+    todo.update({'is_done?': true})
     render json: todo.to_json, status: 200
   end
 
