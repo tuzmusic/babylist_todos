@@ -26,7 +26,7 @@ I added a few gems (rspec, pry) and genrated the rspec files, and added a few te
 Returns all existing Todos.
 
 Response schema:
-```json
+```
 [
     {
         "id": number,
@@ -42,7 +42,7 @@ Response schema:
 Creates a new Todo, and returns the new Todo.
 
 Request schema:
-```json
+```
 { 
      "todo": {
         "description": string, // required
@@ -56,7 +56,7 @@ Updates a Todo, and returns the new Todo.
 If a Todo with the provided id is not found, returns 404.
 
 Request schema:
-```json
+```
 { 
      "todo": {
         "description": string, // optional
