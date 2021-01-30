@@ -1,5 +1,9 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Todo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe TodosController, type: :controller do
+  it "starts empty" do
+    get :index
+    expect(JSON.parse(response.body).length).to eq(0)
+  end
 end
