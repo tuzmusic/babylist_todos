@@ -37,16 +37,15 @@ describe TodosController, type: :controller do
     end
 
     xit 'returns with error 500 if a problem arises' do
-      expect(false).to be false
+      # TODO: How can I make the todo be invalid?
+      expect(false).to be true
     end
   end
 
-  describe 'update' do  
-    xit 'updates a todo' do
+  fdescribe 'update' do  
+    it 'updates a todo' do
       todo = Todo.create(description:'Get a job')
-      expect(Todo.all.length).to eq 1
-
-      patch :update, params:{ todo: {id: 1, is_done?: true} }
+      patch :update, params: {id: Todo.last.id, todo:{is_done?: true} }
 
       created = Todo.last
       expect(created['description']).to eq 'Get a job'

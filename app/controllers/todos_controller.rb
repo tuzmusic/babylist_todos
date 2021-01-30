@@ -15,7 +15,10 @@ class TodosController < ApplicationController
   end
 
   def update
-  
+    todo = Todo.find params[:id]
+    # binding.pry
+    todo.update todo_params
+    todo.save if todo.valid? 
   end
 
 
