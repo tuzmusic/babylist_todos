@@ -20,6 +20,10 @@ I added a few gems (rspec, pry) and genrated the rspec files, and added a few te
 4. Start the rails server: `rails server`
 5. Access the api at `localhost:3000`
 
+## Testing
+
+To run Rspec tests: `rspec -f doc` 
+
 ## Endpoints
 
 ### `GET /todos`
